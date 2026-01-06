@@ -11,7 +11,10 @@ if (!isset($_SESSION['sesi_role']) || !in_array($_SESSION['sesi_role'], ['admin'
 // helper redirect (sweetalert)
 function redirectAlert($action, $result)
 {
-    header("Location: ../dashboard/admin?page=Jenis Surat&action=$action&result=$result");
+    $role = $_SESSION['sesi_role'] ?? '';
+    $page = rawurlencode(string: 'Jenis Surat'); // aman untuk spasi
+
+    header("Location: ../dashboard/" . $role . "?page=" . $page . "&action=" . urlencode($action) . "&result=" . urlencode($result));
     exit;
 }
 

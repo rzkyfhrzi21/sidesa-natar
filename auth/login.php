@@ -6,15 +6,15 @@ if (!empty($_SESSION['sesi_role'])) {
     switch (strtolower($_SESSION['sesi_role'])) {
 
         case 'admin':
-            header('Location: ../dashboard/admin');
+            header('Location: ../dashboard/admin?page=dashboard');
             exit;
 
         case 'operator':
-            header('Location: ../dashboard/operator');
+            header('Location: ../dashboard/operator?page=dashboard');
             exit;
 
         case 'kades':
-            header('Location: ../dashboard/kades');
+            header('Location: ../dashboard/kades?page=dashboard');
             exit;
 
         default:
@@ -35,7 +35,7 @@ $usernameLogin = isset($_GET['username']) ? $_GET['username'] : '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="robots" content="noindex, nofollow">
-    <link rel="shortcut icon" href="../assets/pmi-bg.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="../dashboard/assets/logo.png" type="image/x-icon">
 
     <title>Login - <?php echo NAMA_WEB ?></title>
 
@@ -267,7 +267,7 @@ $usernameLogin = isset($_GET['username']) ? $_GET['username'] : '';
             <img src="../dashboard/assets/logo.png" alt="Logo">
             <div class="brand-text">
                 <div class="title"><?php echo NAMA_WEB; ?></div>
-                <div class="sub">Sistem Informasi Desa Berbasis Web</div>
+                <div class="sub">Sistem Informasi Desa Natar</div>
             </div>
         </div>
 

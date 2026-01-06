@@ -24,10 +24,10 @@ if ($host === 'localhost' || strpos($host, '127.0.0.1') !== false) {
     $database   = 'sidesa-natar';
 } else {
     // Untuk penggunaan hosting
-    $server     = '';
-    $username   = '';
-    $password   = '';
-    $database   = '';
+    $server     = 'localhost';
+    $username   = 'aru1gb4i_sidesa-natar';
+    $password   = '6JA3XD4mT4UBbTQFMkVj';
+    $database   = 'aru1gb4i_sidesa-natar';
 }
 
 $koneksi    = mysqli_connect($server, $username, $password, $database);

@@ -15,7 +15,10 @@ if (!isset($_SESSION['sesi_role']) || !in_array($_SESSION['sesi_role'], ['admin'
 // helper redirect sweetalert
 function redirectAlert($action, $result)
 {
-    header("Location: ../dashboard/admin?page=Data Penduduk&action={$action}&result={$result}");
+    $role = $_SESSION['sesi_role'] ?? '';
+    $page = rawurlencode('Data Penduduk'); // aman untuk spasi
+
+    header("Location: ../dashboard/" . $role . "?page=" . $page . "&action=" . urlencode($action) . "&result=" . urlencode($result));
     exit;
 }
 

@@ -13,11 +13,11 @@ if ($sql = mysqli_query($koneksi, $query)) {
     $sesi_nama      = isset($users['nama_lengkap']) ? $users['nama_lengkap'] : '';
     $sesi_username  = isset($users['username']) ? $users['username'] : '';
     $sesi_role      = isset($users['role']) ? $users['role'] : '';
-    $sesi_img       = isset($users['foto_profil']) ? $users['foto_profil'] : '';
+    $sesi_img       = isset($users['foto_Profil']) ? $users['foto_Profil'] : '';
 }
 
-// Pastikan pengguna sudah login dan memiliki role admin
-if (!isset($_SESSION) || $sesi_role !== 'admin') {
+// Pastikan pengguna sudah login dan memiliki role kades
+if (!isset($_SESSION) || $sesi_role !== 'kades') {
     header('Location: ../auth/login');
     exit();
 }
@@ -35,7 +35,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : '';
 
     <meta name="robots content=" noindex, nofollow">
 
-    <title><?= ucfirst($page); ?> - Panel Admin <?php echo NAMA_WEB ?></title>
+    <title><?= ucfirst($page); ?> - Panel Kepala Desa <?php echo NAMA_WEB ?></title>
 
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
 
@@ -98,7 +98,7 @@ $page = isset($_GET['page']) ? $_GET['page'] : '';
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <li class="sidebar-title">Menu Utama Admin</li>
+                        <li class="sidebar-title">Menu Utama Kepala Desa</li>
 
                         <!-- DASHBOARD -->
                         <li class="sidebar-item">
@@ -108,47 +108,12 @@ $page = isset($_GET['page']) ? $_GET['page'] : '';
                             </a>
                         </li>
 
-                        <!-- USER -->
-                        <li class="sidebar-item">
-                            <a href="?page=Data User" class="sidebar-link">
-                                <i class="bi bi-people-fill"></i>
-                                <span>Manajemen User</span>
-                            </a>
-                        </li>
-
-                        <!-- PENDUDUk -->
-                        <li class="sidebar-item has-sub">
-                            <a href="#" class="sidebar-link">
-                                <i class="bi bi-person-lines-fill"></i>
-                                <span>Manajemen Penduduk</span>
-                            </a>
-                            <ul class="submenu">
-                                <li class="submenu-item">
-                                    <a href="?page=Data Penduduk">Data Penduduk</a>
-                                </li>
-                                <li class="submenu-item">
-                                    <a href="?page=Data Kepala KK">Data Kepala KK</a>
-                                </li>
-                                <li class="submenu-item">
-                                    <a href="?page=Data KK">Data KK</a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <!-- SURAT -->
-                        <li class="sidebar-item has-sub">
-                            <a href="#" class="sidebar-link">
+                        <li class="sidebar-item">
+                            <a href="?page=Permohonan Surat" class="sidebar-link">
                                 <i class="bi bi-envelope-paper-fill"></i>
-                                <span>Administrasi Surat</span>
+                                <span>Daftar Permohonan Surat</span>
                             </a>
-                            <ul class="submenu">
-                                <li class="submenu-item">
-                                    <a href="?page=Permohonan Surat">Permohonan Surat</a>
-                                </li>
-                                <li class="submenu-item">
-                                    <a href="?page=Jenis Surat">Jenis Surat</a>
-                                </li>
-                            </ul>
                         </li>
 
                         <!-- INFORMASI DESA -->
@@ -202,61 +167,61 @@ $page = isset($_GET['page']) ? $_GET['page'] : '';
                 // DASHBOARD
                 // =====================
                 case 'Dashboard':
-                    include 'admin-pages/dashboard.php';
+                    include 'kades-pages/dashboard.php';
                     break;
 
                 // =====================
                 // USER
                 // =====================
                 case 'Data User':
-                    include 'admin-pages/data_user.php';
+                    include 'kades-pages/data_user.php';
                     break;
 
                 // =====================
                 // DATA PENDUDUK & KARTU KELUARGA
                 // =====================
                 case 'Data Penduduk':
-                    include 'admin-pages/data_penduduk.php';
+                    include 'kades-pages/data_penduduk.php';
                     break;
 
                 case 'Data Kepala KK':
-                    include 'admin-pages/data_kepala_kk.php';
+                    include 'kades-pages/data_kepala_kk.php';
                     break;
 
                 case 'Data KK':
-                    include 'admin-pages/data_kk.php';
+                    include 'kades-pages/data_kk.php';
                     break;
 
                 // =====================
                 // SURAT
                 // =====================
                 case 'Permohonan Surat':
-                    include 'admin-pages/permohonan_surat.php';
+                    include 'kades-pages/permohonan_surat.php';
                     break;
 
                 case 'Jenis Surat':
-                    include 'admin-pages/jenis_surat.php';
+                    include 'kades-pages/jenis_surat.php';
                     break;
 
                 // =====================
                 // INFORMASI DESA
                 // =====================
                 case 'Informasi Desa':
-                    include 'admin-pages/informasi_desa.php';
+                    include 'kades-pages/informasi_desa.php';
                     break;
 
                 // =====================
                 // APARAT DESA
                 // =====================
                 case 'Aparat Desa':
-                    include 'admin-pages/aparat_desa.php';
+                    include 'kades-pages/aparat_desa.php';
                     break;
 
                 // =====================
                 // PROFIL
                 // =====================
                 case 'Profil':
-                    include 'admin-pages/profil.php';
+                    include 'kades-pages/Profil.php';
                     break;
             }
             ?>

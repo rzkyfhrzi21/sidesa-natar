@@ -18,9 +18,9 @@ $sql = mysqli_query($koneksi, "SELECT * FROM jenis_surat ORDER BY nama_surat ASC
 
         <div class="card-header d-flex justify-content-between align-items-center">
             <h4 class="card-title mb-0">Daftar Jenis Surat</h4>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">
+            <!-- <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambah">
                 <i class="bi bi-plus-circle"></i> Tambah Jenis Surat
-            </button>
+            </button> -->
         </div>
 
         <div class="card-body table-responsive">
@@ -43,11 +43,11 @@ $sql = mysqli_query($koneksi, "SELECT * FROM jenis_surat ORDER BY nama_surat ASC
                             <td><?= htmlspecialchars($d['nama_surat']); ?></td>
                             <td><?= htmlspecialchars($d['keterangan']); ?></td>
                             <td>
-                                <button class="btn btn-sm btn-warning"
+                                <!-- <button class="btn btn-sm btn-warning"
                                     data-bs-toggle="modal"
                                     data-bs-target="#modalEdit<?= $d['id_jenis_surat']; ?>">
                                     <i class="bi bi-pencil-fill"></i>
-                                </button>
+                                </button> -->
 
                                 <?php if ($_SESSION['sesi_role'] === 'admin'): ?>
                                     <button class="btn btn-sm btn-danger"

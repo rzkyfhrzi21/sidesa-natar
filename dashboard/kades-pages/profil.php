@@ -1,5 +1,5 @@
 <?php
-// Halaman profil khusus KADES
+// Halaman profil khusus OPERATOR
 if (!isset($_SESSION['sesi_role']) || $_SESSION['sesi_role'] !== 'kades') {
     return;
 }
@@ -22,9 +22,9 @@ $role         = $user['role'];
 
 <div class="page-heading">
     <div class="page-title">
-        <h3>Profil Kepala Desa</h3>
+        <h3>Profil Operator</h3>
         <p class="text-subtitle text-muted">
-            Kelola informasi akun Kepala Desa.
+            Perbarui data akun Anda dengan hati-hati.
         </p>
     </div>
 
@@ -71,7 +71,7 @@ $role         = $user['role'];
                     <h5 class="card-title">Informasi Akun</h5>
                 </div>
                 <div class="card-body">
-                    <form action="../functions/function_kades.php" method="post">
+                    <form action="../functions/function_profil.php" method="post">
 
                         <div class="form-group">
                             <label class="form-label">Username</label>

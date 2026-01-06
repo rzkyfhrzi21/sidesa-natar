@@ -21,12 +21,6 @@ if (isset($_POST['btn_update_pribadi'])) {
 	$id_user      = (int) $_POST['id_user'];
 	$nama_lengkap = mysqli_real_escape_string($koneksi, $_POST['nama_lengkap']);
 
-	// Operator & kades hanya boleh update diri sendiri
-	if ($role !== 'admin' && $id_user !== $id_login) {
-		header('Location: ../logout.php');
-		exit;
-	}
-
 	mysqli_query(
 		$koneksi,
 		"UPDATE user 
@@ -36,7 +30,7 @@ if (isset($_POST['btn_update_pribadi'])) {
 
 	$_SESSION['sesi_nama'] = $nama_lengkap;
 
-	header('Location: ../dashboard/' . $role . '?page=profil&status=success');
+	header('Location: ../dashboard/' . $role . '?page=Profil&status=success');
 	exit;
 }
 
@@ -53,12 +47,6 @@ if (isset($_POST['btn_update_akun'])) {
 	$password         = $_POST['password'] ?? '';
 	$konfirmasi       = $_POST['konfirmasi_password'] ?? '';
 
-	// Operator & kades hanya boleh update akun sendiri
-	if ($role !== 'admin' && $id_user !== $id_login) {
-		header('Location: ../logout.php');
-		exit;
-	}
-
 	// Cek username jika berubah
 	if ($username_baru !== $username_lama) {
 		$cek = mysqli_query(
@@ -69,7 +57,7 @@ if (isset($_POST['btn_update_akun'])) {
 		);
 
 		if (mysqli_num_rows($cek) > 0) {
-			header('Location: ../dashboard/' . $role . '?page=profil&status=username_used');
+			header('Location: ../dashboard/' . $role . '?page=Profil&status=username_used');
 			exit;
 		}
 	}
@@ -88,7 +76,7 @@ if (isset($_POST['btn_update_akun'])) {
 	if (!empty($password)) {
 
 		if ($password !== $konfirmasi) {
-			header('Location: ../dashboard/' . $role . '?page=profil&status=password_mismatch');
+			header('Location: ../dashboard/' . $role . '?page=Profil&status=password_mismatch');
 			exit;
 		}
 
@@ -103,7 +91,7 @@ if (isset($_POST['btn_update_akun'])) {
 		);
 	}
 
-	header('Location: ../dashboard/' . $role . '?page=profil&status=success');
+	header('Location: ../dashboard/' . $role . '?page=Profil&status=success');
 	exit;
 }
 

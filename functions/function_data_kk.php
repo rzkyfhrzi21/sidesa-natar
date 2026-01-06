@@ -5,7 +5,7 @@ require_once 'config.php';
 // ===============================
 // PROTEKSI LOGIN
 // ===============================
-if (!isset($_SESSION['sesi_role']) || !in_array($_SESSION['sesi_role'], ['admin', 'operator'])) {
+if (!isset($_SESSION['sesi_role']) || !in_array($_SESSION['sesi_role'], ['admin', 'operator', 'kades'])) {
     header("Location: ../logout.php");
     exit;
 }
@@ -15,7 +15,23 @@ if (!isset($_SESSION['sesi_role']) || !in_array($_SESSION['sesi_role'], ['admin'
 // ===============================
 function redirectAlert($id_kk, $action, $result)
 {
-    header("Location: ../dashboard/admin?page=Data KK&id_kk={$id_kk}&action={$action}&result={$result}");
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Ambil role dari sesi
+    $role = $_SESSION['sesi_role'];
+
+    $base = "../dashboard/" . $role;
+
+    $query = http_build_query([
+        'page'   => 'Data KK',
+        'id_kk'  => $id_kk,
+        'action' => $action,
+        'result' => $result
+    ]);
+
+    header("Location: {$base}?{$query}");
     exit;
 }
 

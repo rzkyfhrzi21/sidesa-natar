@@ -71,7 +71,7 @@ $role         = $user['role'];
                     <h5 class="card-title">Informasi Akun</h5>
                 </div>
                 <div class="card-body">
-                    <form action="../functions/function_operator.php" method="post">
+                    <form action="../functions/function_profil.php" method="post">
 
                         <div class="form-group">
                             <label class="form-label">Username</label>

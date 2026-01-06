@@ -5,7 +5,7 @@ require_once 'config.php';
 // ===============================
 // PROTEKSI LOGIN
 // ===============================
-if (!isset($_SESSION['sesi_role']) || !in_array($_SESSION['sesi_role'], ['admin', 'operator'])) {
+if (!isset($_SESSION['sesi_role']) || !in_array($_SESSION['sesi_role'], ['admin', 'operator', 'kades'])) {
     header("Location: ../logout.php");
     exit;
 }
@@ -13,9 +13,13 @@ if (!isset($_SESSION['sesi_role']) || !in_array($_SESSION['sesi_role'], ['admin'
 // helper redirect
 function redirectAlert($action, $result)
 {
-    header("Location: ../dashboard/admin?page=Aparat Desa&action={$action}&result={$result}");
+    $role = $_SESSION['sesi_role'] ?? '';
+    $page = rawurlencode('Aparat Desa'); // aman untuk spasi
+
+    header("Location: ../dashboard/" . $role . "?page=" . $page . "&action=" . urlencode($action) . "&result=" . urlencode($result));
     exit;
 }
+
 
 // ===============================
 // TAMBAH
