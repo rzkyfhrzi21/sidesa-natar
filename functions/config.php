@@ -29,10 +29,10 @@ if ($host === 'localhost' || strpos($host, '127.0.0.1') !== false) {
     // $password   = '6JA3XD4mT4UBbTQFMkVj';
     // $database   = 'aru1gb4i_sidesa-natar';
     // Untuk penggunaan hosting BYETHOST
-    $server     = 'sql105.byethost12.com';
-    $username   = 'b12_40868578';
-    $password   = 'sidesanatar';
-    $database   = 'b12_40868578_sidesanatar';
+    $server     = '';
+    $username   = '';
+    $password   = '';
+    $database   = '';
 }
 
 $koneksi    = mysqli_connect($server, $username, $password, $database);
